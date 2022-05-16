@@ -1,0 +1,17 @@
+[Unit]
+Description=koyu.space bunbot
+After=network.target
+
+[Service]
+User=koyu
+WorkingDirectory=/home/koyu/bunbot/
+Environment="HOME=/home/koyu"
+Environment="TOKEN="
+ExecStart=/usr/bin/python3 main.py
+ExecReload=/bin/kill $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+Alias=bunbot.service
